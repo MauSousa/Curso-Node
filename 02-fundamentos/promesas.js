@@ -62,15 +62,24 @@ const id = 3;
 //   .then((salario) => console.log(salario))
 //   .catch((error) => console.log(error));
 
+// getEmpleado( id )
+//   .then( empleado => {
+    
+//     getSalario( id )
+//       .then( salario => {
+//         console.log( 'El empleado:', empleado, 'tiene un salario de:', salario )
+//       })
+//       .catch( errors => console.log( errors ))
+    
+//   })
+let nombre
+
 getEmpleado( id )
-  .then( empleado => {
-    
-    getSalario( id )
-      .then( salario => {
-        console.log( 'El empleado:', empleado, 'tiene un salario de:', salario )
-      })
-      .catch( errors => console.log( errors ))
-    
+  .then(empleado => {
+    nombre = empleado
+    return getSalario( id ) 
   })
+  .then(salario => console.log('El empleado:', nombre, 'tiene un salario de:', salario))
+  .catch( err => console.log( err) )
 
 
