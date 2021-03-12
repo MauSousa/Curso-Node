@@ -1,6 +1,8 @@
-// Imprimir la tabla del cinco
 
-const tablaDelNumero = ( numero ) => {
+const { crearArchivo } = require('./helpers/multiplicar.js')
+
+// Imprimir la tabla del cinco
+/*const tablaDelNumero = ( numero ) => {
   
   console.clear();
   console.log(`Imprimiendo la tabla del ${numero}`)
@@ -10,7 +12,12 @@ const tablaDelNumero = ( numero ) => {
   }
 
 }
+tablaDelNumero(5)*/
 
-tablaDelNumero(5)
+console.clear()
 
+const base = 1
 
+crearArchivo( base )
+  .then(nombreArchivo => console.log( nombreArchivo, 'creado'))
+  .catch(error => console.log(error))
