@@ -1,3 +1,6 @@
 node_modules/
 
 03-bases-node/salida/*.txt
+
+04-tareas-por-hacer/db/*.txt
+04-tareas-por-hacer/db/*.json
