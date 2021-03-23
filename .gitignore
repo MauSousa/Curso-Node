@@ -6,3 +6,6 @@ node_modules/
 04-tareas-por-hacer/db/*.json
 04-tareas-por-hacer/Imagenes
 
+05-clima-app/.env
+05-clima-app/db
+05-clima-app/img
