@@ -9,3 +9,7 @@ node_modules/
 05-clima-app/.env
 05-clima-app/db
 05-clima-app/img
+
+06-webserver/.env
+
+
