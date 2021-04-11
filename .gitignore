@@ -13,7 +13,7 @@ node_modules/
 06-webserver/.env
 
 07-restserver/.env
-
+07-restserver/.eslintrc.js
 
 
 
