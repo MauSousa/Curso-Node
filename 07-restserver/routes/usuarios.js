@@ -8,7 +8,7 @@ const {
   usuariosDelete,
   usuariosPatch,
 } = require('../controllers/usuarios')
-const { esRoleValido } = require('../helpers/db-validators')
+const { esRoleValido, emailExiste } = require('../helpers/db-validators')
 const { validarCampos } = require('../middlewares/validar-campos')
 
 const router = Router()
@@ -24,6 +24,7 @@ router.post(
       'El debe password debe ser mínimo de 8 caracteres'
     ).isLength({ min: 8 }),
     check('correo', 'El correo no es válido').isEmail(),
+    check('correo').custom(emailExiste),
     // check('role', 'No es un role permitido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
     check('role').custom(esRoleValido),
     validarCampos,
