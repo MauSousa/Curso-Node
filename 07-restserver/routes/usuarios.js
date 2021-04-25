@@ -8,11 +8,13 @@ const {
   usuariosDelete,
   usuariosPatch,
 } = require('../controllers/usuarios')
+
 const {
   esRoleValido,
   emailExiste,
-  existeUsurarioPorId,
+  existeUsuarioPorId,
 } = require('../helpers/db-validators')
+
 const { validarCampos } = require('../middlewares/validar-campos')
 
 const router = Router()
@@ -23,7 +25,7 @@ router.put(
   '/:id',
   [
     check('id', 'No es un ID válido').isMongoId(),
-    check('id').custom(existeUsurarioPorId),
+    check('id').custom(existeUsuarioPorId),
     validarCampos,
   ],
   usuariosPut
@@ -39,7 +41,7 @@ router.post(
     ).isLength({ min: 8 }),
     check('correo', 'El correo no es válido').isEmail(),
     check('correo').custom(emailExiste),
-    // check('role', 'No es un role permitido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
+    check('role', 'No es un role permitido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
     check('role').custom(esRoleValido),
     validarCampos,
   ],
