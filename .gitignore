@@ -14,6 +14,7 @@ node_modules/
 
 07-restserver/.env
 07-restserver/.eslintrc.js
+07-restserver/images/
 
 
 
