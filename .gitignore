@@ -12,6 +12,10 @@ node_modules/
 
 06-webserver/.env
 
+06-webserver-repaso/
+
+07-restserver-repaso/
+
 07-restserver/.env
 07-restserver/.eslintrc.js
 07-restserver/images/
