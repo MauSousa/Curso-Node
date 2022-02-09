@@ -1,17 +1,26 @@
 import { Request, Response } from "express";
+import User from "../models/user";
 
-export const getUsers = ( req: Request, res: Response ) => {
-  res.json({
-    message: 'getUsers'
-  })
+export const getUsers = async( req: Request, res: Response ) => {
+
+  const users = await User.findAll();
+
+  res.json({ users })
 }
 
-export const getUser = ( req: Request, res: Response ) => {
+export const getUser = async( req: Request, res: Response ) => {
+  
   const { id } = req.params;
-  res.json({
-    id,
-    message: 'getUser'
-  })
+  
+  const user = await User.findByPk( id );
+  
+  if( !user ) {
+    res.status(404).json({
+      message: `The user with id ${id} doesn't exist`
+    })
+  } else {
+    res.json( user)
+  }
 }
 
 export const postUser = ( req: Request, res: Response ) => {
