@@ -1,5 +1,7 @@
 node_modules/
 
+.env
+
 03-bases-node/salida/*.txt
 
 04-tareas-por-hacer/db/*.txt
@@ -10,15 +12,14 @@ node_modules/
 05-clima-app/db
 05-clima-app/img
 
-06-webserver/.env
 
 06-webserver-repaso/
 06-webserver-repaso-backup/
 
 07-restserver-repaso/
 
-07-restserver/.env
 07-restserver/.eslintrc.js
 07-restserver/images/
 
+11-ts-restserver/dist
 
