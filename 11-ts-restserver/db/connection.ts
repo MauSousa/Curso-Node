@@ -1,8 +1,8 @@
 import { Sequelize } from 'sequelize';
 
-const db = new Sequelize('curso_node', 'demos', '123456', {
+const db = new Sequelize('db_name', 'db_user', 'db_pass', {
   host: 'localhost',
-  dialect: 'mariadb'
+  dialect: 'db_manager'
 });
 
 
