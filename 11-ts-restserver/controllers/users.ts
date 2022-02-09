@@ -17,29 +17,69 @@ export const getUser = async( req: Request, res: Response ) => {
   if( !user ) {
     res.status(404).json({
       message: `The user with id ${id} doesn't exist`
-    })
+    });
   } else {
-    res.json( user)
+    res.json( user);
   }
 }
 
-export const postUser = ( req: Request, res: Response ) => {
+export const postUser = async( req: Request, res: Response ) => {
+
   const { body } = req;
-  res.json({
-    message: 'postUser',
-    body
-  })
+
+  try {
+
+    const emailExists = await User.findOne({
+      where: {
+        email: body.email
+      }
+    });
+
+    if( emailExists ) {
+      return res.status(400).json({
+        message: `The email ${body.email} already exists`
+      })
+    }
+
+    const user = User.build( body );
+    await user.save();
+
+    res.status(201).json( user );
+    
+  } catch ( error ) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Talk to the admin',
+    })
+    
+  }
 }
 
-export const putUser = ( req: Request, res: Response ) => {
+export const putUser = async( req: Request, res: Response ) => {
+
   const { body } = req
   const { id } = req.params
+  
+  try {
 
-  res.json({
-    message: 'putUser',
-    body,
-    id
-  })
+    const user = await User.findByPk( id );
+
+    if( !user ) {
+      return res.status(404).json({
+        message: `User with id ${id} doesn't exist`
+      })
+    }
+
+    await user.update( body )
+
+    res.status(200).json( user );
+      
+    } catch ( error ) {
+      console.log(error)
+      res.status(500).json({
+        message: 'Talk to the admin',
+      })
+    }
 }
 
 export const deleteUser = ( req: Request, res: Response ) => {
